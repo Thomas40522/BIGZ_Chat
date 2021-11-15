@@ -1,0 +1,24 @@
+.nav_bar span{
+    color:#FFF;
+    font-size: 30px;
+}
+
+.nav_bar a{
+    text-decoration: none;
+}
+
+
+#front, #hot, #public, #box, #aboutus{
+    padding-left:25px;
+    padding-right:25px;
+    padding-top:25px;
+}
+
+.nav_bar{
+    background-color: rgba(0, 195, 255, 0.932);
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    padding-top:20px;
+}
