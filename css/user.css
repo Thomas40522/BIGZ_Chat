@@ -1,0 +1,86 @@
+.top{
+    padding-top: 100px;
+    margin: 0px;
+}
+
+.toplog, .topset{
+    padding-top:100px;
+    margin: 0px;
+    padding-bottom: 20px;
+}
+
+.registration{
+    margin-left:50px;
+}
+
+h2{
+    font-size:25px;
+}
+
+#field1{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size:15px;
+}
+#field2{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size:13px;
+}
+
+.form label{
+    font-size:17px;
+}
+
+.form p{
+    display:inline;
+}
+
+.form input{
+    display: block;
+    margin-top:10px;
+    margin-bottom: 10px;
+    border-color:rgba(165, 161, 161, 0.363);
+    border-radius:3px;
+    border-width:1.3px 1.3px 1.3px 1.3px;
+    padding: 2px 2px 2px 2px;
+}
+.form button{
+    margin-top:10px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    color:white;
+    background-color:rgb(59, 159, 241);
+    border-color:rgb(59, 159, 241);
+    border-radius:3px;
+    cursor: pointer;
+    width: 130px;
+}
+
+#logout button{
+    margin-top:20px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    color:white;
+    background-color:rgb(206, 24, 18);
+    border-color:rgb(206, 24, 18);
+    border-radius:3px;
+    cursor: pointer;
+    width: 130px;
+}
+
+#change_password button{
+    margin-top:20px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    color:white;
+    background-color:rgba(111, 226, 17, 0.959);
+    border-color:rgba(111, 226, 17, 0.959);
+    border-radius:3px;
+    cursor: pointer;
+    width: 130px;
+}
+
+#last{
+    font-size:13px;
+}
