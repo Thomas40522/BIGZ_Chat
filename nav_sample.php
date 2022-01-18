@@ -21,6 +21,12 @@
         </nav>
         </header>
 
+        <div style="margin-top:100px">
+        <?php
+        include("data/connect.php");
+        echo("1");
+        ?>
+        </div>
 
     </body>
 </html>
