@@ -45,6 +45,12 @@ h2{
     border-width:1.3px 1.3px 1.3px 1.3px;
     padding: 2px 2px 2px 2px;
 }
+
+#bio{
+    width:250px;
+    height:100px;
+
+}
 .form button{
     margin-top:10px;
     padding-top:5px;

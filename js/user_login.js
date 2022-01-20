@@ -1,15 +1,21 @@
-var current_user = JSON.parse(localStorage.getItem("current_user"))
+var current_user = {
+    username:"",
+    password:"",
+    email:"",
+    grade:"",
+    gender:"",
+    bio:"",
+    nickname:""
+};
 
-document.addEventListener("DOMContentLoaded",
-    function(){
-        document.querySelector("button").addEventListener("click", login)
-    }
-);
+function login(username, email, grade, gender, bio, nickname){
+    current_user.username = username;
+    current_user.email = email;
+    current_user.grade = grade;
+    current_user.gender = gender;
+    current_user.bio = bio;
+    current_user.nickname = nickname;
+    localStorage.setItem("current_user", JSON.stringify(current_user));
+    window.location.href = "titlepage.php";
+};
 
-function login(){
-    if(document.querySelector("#logname").value == current_user.username && document.querySelector("#logpassword").value == current_user.password){
-        window.location.href = "titlepage.php";
-    }else{
-        alert("username does not exist or password is incorrect")
-    }
-}
