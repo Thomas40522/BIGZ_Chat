@@ -36,7 +36,7 @@ h2{
     display:inline;
 }
 
-.form input{
+.form input, .form textarea{
     display: block;
     margin-top:10px;
     margin-bottom: 10px;
@@ -44,6 +44,10 @@ h2{
     border-radius:3px;
     border-width:1.3px 1.3px 1.3px 1.3px;
     padding: 2px 2px 2px 2px;
+}
+
+#moreLowerSpace{
+    margin-bottom: 25px;
 }
 
 #bio{

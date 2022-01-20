@@ -1,3 +1,11 @@
+<?php
+    require_once('include/db.php');
+    session_start();
+    $sql = "SELECT * FROM posts";
+    $posts =mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,39 +29,44 @@
             </user>
         </nav>
         </header>
-
-        <div id = "content">
-            <div class="table" id="table1">
-                <h2 class="topic_title">11</h2>
-                <p class="paragraph">11</p>
-                <span class="user">posted by: </span><span class="name">11</span>
+        <div class="post">
+            <span id="post">Post your own here!!!</span>
+        </div>
+        <?php
+            while($post = mysqli_fetch_assoc($posts)){
+        ?>
+        <div class="content">
+            <div class="container">
+                <span id="c_title"><?php echo $post['title']; ?></span>
+                <div class="links">
+                    <a class="link" href="">report</a>
+                    <a class="link" href="<?php echo 'include/delete.php?username='.$post['IDname'].'&postid='.$post['id']; ?>">delete</a>
+                </div>                 
             </div>
-            <div class="table" id="table2">
-                <h2 class="topic_title">11</h2>
-                <p class="paragraph">11</p>
-                <span class="user">posted by: </span><span class="name">11</span>
+            <div id="content">       
+                <span id="text_content"><?php echo $post['content']; ?></span>
             </div>
-            <div class="table" id="table3">
-                <h2 class="topic_title">11</h2>
-                <p class="paragraph">11</p>
-                <span class="user">posted by: </span><span class="name">11</span>
+            <div id="name">
+                <span class="user">posted by: </span><a href="<?php
+                    if(!$post['isAnonymous']){
+                        echo 'user_info.php?username=' . $post['IDname']; 
+                    }else{
+                        echo "titlepage.php";
+                    }
+                    ?>" class="username"><?php 
+                    if($post['isAnonymous']){
+                        echo "Anonymous";
+                    }else{
+                        echo $post['username'];
+                    }
+                ?></a>
             </div>
-            <div class="table" id="table4">
-                <h2 class="topic_title">11</h2>
-                <p class="paragraph">11</p>
-                <span class="user">posted by: </span><span class="name">11</span>
-            </div>
-            <div class="table" id="table5">
-                <h2 class="topic_title">11</h2>
-                <p class="paragraph">11</p>
-                <span class="user">posted by: </span><span class="name">11</span>
-            </div>
-
+            <?php
+                }
+                mysqli_free_result($posts);
+            ?>
         </div>
 
-        <div id="input_text">
-
-        </div>
 
         <script src="js/titlepage.js"></script>
     </body>

@@ -48,7 +48,7 @@
     <body>
         <header>
         <nav class="nav_bar">
-            <a href="nav_title.php"><span id = "title">BIGZ Chat</span></a>
+            <a href="index.php"><span id = "title">BIGZ Chat</span></a>
             <a href="titlepage.php"><span id = "front">首页</span></a>
             <a href=""><span id = "hot">热点</span></a>
             <a href=""><span id = "public"> 公告栏</span></a>

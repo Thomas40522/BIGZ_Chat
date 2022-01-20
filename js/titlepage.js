@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded",
                 window.location.href = "user_sign.php";
             })
         }
+        document.querySelector(".post").addEventListener("click", function(){
+            window.location.href = "posting.php";
+        })
 
     }
 );

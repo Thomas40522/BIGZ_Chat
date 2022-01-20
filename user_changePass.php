@@ -9,10 +9,18 @@
         $confirm_password = $_POST['confirm_password'];
         if(empty($password)||empty($original_password)||empty($confirm_password)){
             echo "<script src='js/warn.js'></script> <script> warning('all the fields are required to be filled') </script>";
-        }else if($orginal_password!=$confirm_password){
+        }else if($password!=$confirm_password){
             echo "<script src='js/warn.js'></script> <script> warning('the new password should match the confirm password') </script>";
         }else{
-            
+            $sql = "SELECT * FROM users WHERE username = '".$username."' LIMIT 1";
+            $result = mysqli_query($conn, $sql);
+            $check = mysqli_fetch_assoc($result);
+            if($original_password == $check['password']){
+                $sql = "UPDATE users SET password = '$password'";
+                mysqli_query($conn, $sql);
+            }else{
+                echo "<script src='js/warn.js'></script> <script> warning('the original password you entered is not correct') </script>";
+            }
         }
     }
 

@@ -23,6 +23,6 @@
 
         <div style="margin-top:100px">
         </div>
-
+        <script src="js/titlepage.js"></script>
     </body>
 </html>

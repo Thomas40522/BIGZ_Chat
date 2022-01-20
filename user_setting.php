@@ -36,6 +36,8 @@
         $sql .= "WHERE username = '". $username. "'";
         $sql .= "LIMIT 1";
         mysqli_query($conn, $sql);
+        $up = "UPDATE posts SET username = '$nickname' WHERE IDname = '$username'";
+        mysqli_query($conn, $up);
         ?>
         <script>
             nickname = "<?php echo $nickname;?>";
@@ -69,7 +71,7 @@
     <body>
         <header>
         <nav class="nav_bar">
-            <a href="nav_title.php"><span id = "title">BIGZ Chat</span></a>
+            <a href="index.php"><span id = "title">BIGZ Chat</span></a>
             <a href="titlepage.php"><span id = "front">首页</span></a>
             <a href=""><span id = "hot">热点</span></a>
             <a href=""><span id = "public"> 公告栏</span></a>
@@ -84,7 +86,7 @@
 
         <form action="" method="POST" class="registration">
             <h2 class="topset">Profile</h2>
-            <div class="form">
+            <div class="form" id="moreLowerSpace">
                 <label>User Name: </label><p id="myName"></p>
             </div>
             <div class="form">
@@ -105,7 +107,7 @@
             </div>
             <div class="form">
                 <label>Bio: </label><p id="bio"></p>
-                <input type="text" id="bio" name="bio">
+                <textarea id="bio" name="bio"></textarea>
             </div>
             <div class="form">
                 <button>Change Setting</button>
