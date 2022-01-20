@@ -36,7 +36,7 @@
             <div class="form">
                 <button>Login</button>
             </div>
-            <p id="last">Don't have an account? Click <a href="user_sign.html">here</a> to sign up
+            <p id="last">Don't have an account? Click <a href="user_sign.php">here</a> to sign up
         </div>
 
 

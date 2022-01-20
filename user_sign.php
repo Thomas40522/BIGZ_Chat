@@ -1,6 +1,20 @@
 <?php
     require_once('include/db.php');
-    
+    require_once('include/function.php');
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $username = prep_data($_POST['name']);
+        $password = prep_data($_POST['password']);
+        $email = prep_data($_POST['email']);
+        $grade = prep_data($_POST['grade']);
+        $gender = prep_data($_POST['gender']);
+
+        // $search = "SELECT * FROM users WHERE username=$username";
+        // if(mysqli_query($conn, $search)!=null){
+        //     die('your username or email address is already taken');
+        // }
+        $sql = "INSERT INTO users (username, password, email, grade, gender) VALUES('$username','$password','$email','$grade','$gender')";
+        mysqli_query($conn, $sql);
+    }
 
 ?>
 
@@ -30,7 +44,7 @@
         </nav>
         </header>
 
-        <form class="registration" action="user_sign.php" method="POST">
+        <div class="registration">
             <h2 class="top">Register Account</h2>
             <p id="field1">Please fill this form to create an account</p>
             <p id="field2">* are required</p>
@@ -59,15 +73,14 @@
                 <input type="text" id="gender">
             </div>
             <div class="form">
-                <input type="submit"/>
+                <button type="submit">Submit</button>
             </div>
-            <p id="last">Already have an account? Click <a href="user_login.php">here</a> to login
+            <p id="last">Already have an account? Click <a href="user_login.php">here</a> to login</p>
         </div>
 
 
 
-
-        <script src="js/ajax-utils.js"></script>
         <script src="js/user_sign.js"></script>
+        <script src="js/ajax-utils.js"></script>
     </body>
 </html>

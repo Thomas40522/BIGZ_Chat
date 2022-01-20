@@ -29,17 +29,18 @@ function signup(){
         current_user.email = document.querySelector("#email").value;
         current_user.grade = document.querySelector("#grade").value;
         current_user.gender = document.querySelector("#gender").value;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log('connection successful');
+            }
+        };
+        console.log(current_user);
+        xmlhttp.open("POST", "user_sign.php?q=" + current_user, true);
+        xmlhttp.send();
+
         localStorage.setItem("current_user", JSON.stringify(current_user));
-        window.location.href = "user_login.html";
+        // window.location.href = "user_login.php";
     }
 };
-
-function postElement(current_user, url){
-    console.log("1")
-    var post = new XMLHttpRequest();
-    post.open("PUT", url, true);
-    post.setRequestHeader('Content-Type', 'application/json');
-    post.send(JSON.stringify({
-        value: current_user
-    }));
-}

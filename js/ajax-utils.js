@@ -11,14 +11,14 @@ function getRequestObject(){
     }
 }
 
-ajaxUtils.sendGetRequest = 
+ajaxUtils.sendPostRequest = 
     function(requestUrl, responseHandler){
         var request = getRequestObject();
         request.onreadystatechange = 
             function(){
                 handleResponse(request, responseHandler);
             };
-        request.open("GET", requestUrl, true);
+        request.open("POST", requestUrl, true);
         request.send();
     };
 
