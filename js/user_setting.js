@@ -30,14 +30,14 @@ function changeSetting(){
         current_user.grade = document.querySelector("#grade").value
     }
     localStorage.setItem("current_user", JSON.stringify(current_user));
-    window.location.href = "user_setting.html"
+    window.location.href = "user_setting.php"
 }
 
 function logout(){
     localStorage.removeItem("current_user");
-    window.location.href = "user_login.html";
+    window.location.href = "user_login.php";
 }
 
 function changePassword(){
-    window.location.href = "user_changePass.html";
+    window.location.href = "user_changePass.php";
 }

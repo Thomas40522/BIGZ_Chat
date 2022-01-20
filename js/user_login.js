@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",
 
 function login(){
     if(document.querySelector("#logname").value == current_user.username && document.querySelector("#logpassword").value == current_user.password){
-        window.location.href = "titlepage.html";
+        window.location.href = "titlepage.php";
     }else{
         alert("username does not exist or password is incorrect")
     }

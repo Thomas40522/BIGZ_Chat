@@ -29,7 +29,6 @@ function signup(){
         current_user.email = document.querySelector("#email").value;
         current_user.grade = document.querySelector("#grade").value;
         current_user.gender = document.querySelector("#gender").value;
-        postElement(current_user, "http://ptsv2.com/t/z36na-1637150376/post")
         localStorage.setItem("current_user", JSON.stringify(current_user));
         window.location.href = "user_login.html";
     }

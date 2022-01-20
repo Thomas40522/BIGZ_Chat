@@ -8,8 +8,8 @@
     <body>
         <header>
         <nav class="nav_bar">
-            <a href="nav_title.html"><span id = "title">BIGZ Chat</span></a>
-            <a href="titlepage.html"><span id = "front">首页</span></a>
+            <a href="index.php"><span id = "title">BIGZ Chat</span></a>
+            <a href="titlepage.php"><span id = "front">首页</span></a>
             <a href=""><span id = "hot">热点</span></a>
             <a href=""><span id = "public"> 公告栏</span></a>
             <a href=""><span id = "box"> 意见箱</span></a>
@@ -22,10 +22,6 @@
         </header>
 
         <div style="margin-top:100px">
-        <?php
-        include("data/connect.php");
-        echo("1");
-        ?>
         </div>
 
     </body>

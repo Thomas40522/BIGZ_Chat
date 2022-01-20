@@ -45,7 +45,7 @@ h2{
     border-width:1.3px 1.3px 1.3px 1.3px;
     padding: 2px 2px 2px 2px;
 }
-.form button{
+.form input[type=submit]{
     margin-top:10px;
     padding-top:5px;
     padding-bottom: 5px;

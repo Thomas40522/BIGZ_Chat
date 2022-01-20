@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded",
     function(){
         document.querySelector("#username").textContent = current_user.username;
         document.querySelector("user").addEventListener("click", function(){
-            window.location.href = "user_setting.html";
+            window.location.href = "user_setting.php";
         })
         document.querySelector(".form button").addEventListener("click", function(){
             if(document.querySelector("#password").value != document.querySelector("#confirm_password").value){
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded",
             }else{
                 current_user.password = document.querySelector("#password").value;
                 localStorage.setItem("current_user", JSON.stringify(current_user));
-                window.location.href = "user_setting.html";
+                window.location.href = "user_setting.php";
             }
 
         });

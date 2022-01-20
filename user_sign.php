@@ -1,3 +1,10 @@
+<?php
+    require_once('include/db.php');
+    
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,13 +16,13 @@
     <body>
         <header>
         <nav class="nav_bar">
-            <a href="nav_title.html"><span id = "title">BIGZ Chat</span></a>
-            <a href="titlepage.html"><span id = "front">首页</span></a>
+            <a href="index.php"><span id = "title">BIGZ Chat</span></a>
+            <a href="titlepage.php"><span id = "front">首页</span></a>
             <a href=""><span id = "hot">热点</span></a>
             <a href=""><span id = "public"> 公告栏</span></a>
             <a href=""><span id = "box"> 意见箱</span></a>
             <a href=""><span id = "aboutus">About Us</span></a>
-            <a href="user_sign.html">
+            <a href="user_sign.php">
             <user>
                 <img id = "profilePic" src = "assests/ProfilePic.png", width = "40px", height = "40px", alt = "profile picture">
                 <span id = "username">User Name</span>
@@ -23,7 +30,7 @@
         </nav>
         </header>
 
-        <div class="registration">
+        <form class="registration" action="user_sign.php" method="POST">
             <h2 class="top">Register Account</h2>
             <p id="field1">Please fill this form to create an account</p>
             <p id="field2">* are required</p>
@@ -52,9 +59,9 @@
                 <input type="text" id="gender">
             </div>
             <div class="form">
-                <button>Submit</button>
+                <input type="submit"/>
             </div>
-            <p id="last">Already have an account? Click <a href="user_login.html">here</a> to login
+            <p id="last">Already have an account? Click <a href="user_login.php">here</a> to login
         </div>
 
 
