@@ -9,9 +9,33 @@
         $username = $_SESSION['nickname'];
         $IDname = $_SESSION['username'];
         $isReported = 0;
-        $sql = "INSERT INTO posts (title, content, username,isAnonymous,isReported,IDname) VALUES ('$title','$content','$username','$isAnonymous','$isReported','$IDname')";
+
+        $data = "SELECT MAX(viewOrder) AS largestOrder FROM posts";
+        $result = mysqli_query($conn, $data);
+        $result = mysqli_fetch_assoc($result);
+        $viewOrder = ++$result['largestOrder'];
+
+        $sql = "INSERT INTO posts (title, content, username,isAnonymous,isReported,IDname,viewOrder) VALUES ('$title','$content','$username','$isAnonymous','$isReported','$IDname','$viewOrder')";
         mysqli_query($conn, $sql);
-        header("Location: titlepage.php");
+
+        $pick = "SELECT id AS identification FROM posts WHERE title = '$title' LIMIT 1";
+        $result = mysqli_query($conn, $pick);
+        $id = mysqli_fetch_assoc($result);
+        $id = $id['identification'];
+
+        $table="CREATE TABLE 'newtable' ('id' INT NOT NULL AUTO_INCREMENT ,
+            'content' VARCHAR(2000) NOT NULL PRIMARY KEY,
+            'username' VARCHAR(20) NOT NULL ,
+            'isAnonymous' BOOLEAN NOT NULL ,
+            'isReported' BOOLEAN NOT NULL ,
+            'IDname' VARCHAR(20) NOT NULL)";
+        // echo $table;
+        if(mysqli_query($conn, $table)){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+        // header("Location: titlepage.php");
     }
 
 

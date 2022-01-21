@@ -3,7 +3,7 @@
     session_start();
     $sql = "SELECT * FROM posts ORDER BY viewOrder DESC";
     $posts =mysqli_query($conn, $sql);
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/navbar.css">
-        <link rel="stylesheet" href="css/title.css">
+        <link rel="stylesheet" href="css/reply.css">
         <title>BIGZ chat</title>
     </head>
     <body>
@@ -30,13 +30,9 @@
         </nav>
         </header>
         <div class="post">
-            <span id="post">Post your own here!!!</span>
+            <span id="post">Reply here!!!</span>
         </div>
-        <?php
-            while($post = mysqli_fetch_assoc($posts)){
-        ?>
         <div class="content">
-            <a href="<?php echo 'reply.php?id='.$post['id'];?>" id="a_title">
             <div class="container">
                 <span id="c_title"><?php echo $post['title']; ?></span>
                 <div class="links">
@@ -44,7 +40,6 @@
                     <a class="link" href="<?php echo 'include/delete.php?username='.$post['IDname'].'&postid='.$post['id']; ?>">delete</a>
                 </div>                 
             </div>
-            </a>
             <div id="content">       
                 <span id="text_content"><?php echo $post['content']; ?></span>
             </div>
@@ -63,8 +58,27 @@
                     }
                 ?></a>
             </div>
+            
+            <div id="reply_content">       
+                <span id="text_content">content<?php echo $post['content']; ?></span>
+            </div>
+            <div id="name">
+                <span class="user">replied by: </span><a href="<?php
+                    if(!$post['isAnonymous']){
+                        echo 'user_info.php?username=' . $post['IDname']; 
+                    }else{
+                        echo "titlepage.php";
+                    }
+                    ?>" class="username"><?php 
+                    if($post['isAnonymous']){
+                        echo "Anonymous";
+                    }else{
+                        echo $post['username'];
+                    }
+                ?></a>
+            </div>
+
             <?php
-                }
                 mysqli_free_result($posts);
             ?>
         </div>
