@@ -37,8 +37,8 @@ user{
 }
 
 .nav_bar{
-    background-color: rgba(0, 195, 255, 0.932);
-    position:absolute;
+    background-color: rgba(0, 195, 255);
+    position:fixed;
     top:0;
     left:0;
     right:0;
@@ -50,22 +50,22 @@ user{
     margin-left:10px;
 }
 #front:hover{
-    background-color: rgba(3, 149, 194, 0.932);
+    background-color: rgba(3, 149, 194);
     padding-bottom: 30px;
 }
 #hot:hover{
-    background-color: rgba(3, 149, 194, 0.932);
+    background-color: rgba(3, 149, 194);
     padding-bottom: 30px;
 }
 #public:hover{
-    background-color: rgba(3, 149, 194, 0.932);
+    background-color: rgba(3, 149, 194);
     padding-bottom: 30px;
 }
 #box:hover{
-    background-color: rgba(3, 149, 194, 0.932);
+    background-color: rgba(3, 149, 194);
     padding-bottom: 30px;
 }
 #aboutus:hover{
-    background-color: rgba(3, 149, 194, 0.932);
+    background-color: rgba(3, 149, 194);
     padding-bottom: 30px;
 }
