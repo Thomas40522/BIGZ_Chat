@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once('include/db.php');
+    require_once('isLogin.php');
     require_once('include/function.php');
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $title = prep_data($_POST['title']);

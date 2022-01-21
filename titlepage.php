@@ -2,7 +2,7 @@
     require_once('include/db.php');
     session_start();
     $sql = "SELECT * FROM posts ORDER BY viewOrder DESC";
-    $posts =mysqli_query($conn, $sql);
+    $posts = mysqli_query($conn, $sql);
 
 ?>
 
@@ -49,7 +49,7 @@
                 <span id="text_content"><?php echo $post['content']; ?></span>
             </div>
             <div id="name">
-                <span class="user">posted by: </span><a href="<?php
+                <span class="user">posted by: </span><a target="_blank"href="<?php
                     if(!$post['isAnonymous']){
                         echo 'user_info.php?username=' . $post['IDname']; 
                     }else{

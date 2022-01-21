@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once('include/db.php');
+    require_once('isLogin.php');
     require_once('include/function.php');
     $id = $_GET['id'];
 
@@ -10,6 +11,10 @@
         $username = $_SESSION['nickname'];
         $IDname = $_SESSION['username'];
         $isReported = 0;
+
+        if(empty($username)||empty($IDname)){
+            die('missing user');
+        }
 
         $data = "SELECT MAX(viewOrder) AS largestOrder FROM posts";
         $result = mysqli_query($conn, $data);

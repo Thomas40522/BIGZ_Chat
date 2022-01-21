@@ -3,8 +3,13 @@
     session_start();
     $id = $_GET['id'];
     $sql = "SELECT * FROM posts WHERE id = '".$id."' LIMIT 1";
-    $post =mysqli_query($conn, $sql);
+    $post = mysqli_query($conn, $sql);
     $post = mysqli_fetch_assoc($post);
+
+    $newId = "r" .$id;
+    $rel = "SELECT * FROM $newId ORDER BY id DESC";
+    $replies = mysqli_query($conn, $rel);
+    
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +52,7 @@
                 <span id="text_content"><?php echo $post['content']; ?></span>
             </div>
             <div id="name">
-                <span class="user">posted by: </span><a href="<?php
+                <span class="user">posted by: </span><a target="_blank" href="<?php
                     if(!$post['isAnonymous']){
                         echo 'user_info.php?username=' . $post['IDname']; 
                     }else{
@@ -62,26 +67,33 @@
                 ?></a>
             </div>
             
+            <?php while($reply = mysqli_fetch_assoc($replies)){ ?>
+            <div class="r_links">
+                <a class="r_link" href="<?php echo 'include/r_report.php?id='.$newId.'&replyid='.$reply['id'];?>" id="report" target="_blank">report</a>
+                <a class="r_link" href="<?php echo 'include/r_delete.php?username='.$reply['IDname'].'&postid='.$id.'&replyid='.$reply['id']; ?>">delete</a>
+            </div> 
             <div id="reply_content">       
-                <span id="text_content">content<?php echo $post['content']; ?></span>
+                <span id="text_content"><?php echo $reply['content']; ?></span>
             </div>
+            
             <div id="name">
-                <span class="user">replied by: </span><a href="<?php
-                    if(!$post['isAnonymous']){
-                        echo 'user_info.php?username=' . $post['IDname']; 
+                <span class="user">replied by: </span><a target="_blank" href="<?php
+                    if(!$reply['isAnonymous']){
+                        echo 'user_info.php?username=' . $reply['IDname']; 
                     }else{
-                        echo "titlepage.php";
+                        echo 'reply.php?id='.$id;
                     }
                     ?>" class="username"><?php 
-                    if($post['isAnonymous']){
+                    if($reply['isAnonymous']){
                         echo "Anonymous";
                     }else{
-                        echo $post['username'];
+                        echo $reply['username'];
                     }
                 ?></a>
             </div>
 
             <?php
+            }
             ?>
         </div>
 
