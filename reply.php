@@ -1,9 +1,10 @@
 <?php
     require_once('include/db.php');
     session_start();
-    $sql = "SELECT * FROM posts ORDER BY viewOrder DESC";
-    $posts =mysqli_query($conn, $sql);
-    
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM posts WHERE id = '".$id."' LIMIT 1";
+    $post =mysqli_query($conn, $sql);
+    $post = mysqli_fetch_assoc($post);
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,9 @@
         </nav>
         </header>
         <div class="post">
+            <a href = "<?php echo'replying.php?id='.$post['id']?>" id="reply">
             <span id="post">Reply here!!!</span>
+            </a>
         </div>
         <div class="content">
             <div class="container">
@@ -79,12 +82,11 @@
             </div>
 
             <?php
-                mysqli_free_result($posts);
             ?>
         </div>
 
 
         <script src="js/titlepage.js"></script>
-        <script src="js/posting.js"></script>
+        <script src="js/reply.js"></script>
     </body>
 </html>

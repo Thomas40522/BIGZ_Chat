@@ -3,7 +3,6 @@
     require_once('db.php');
 
     if (!isset($_GET['username'])){
-        echo"work";
         header("Location: titlepage.php");
     }
 
@@ -11,7 +10,10 @@
     $id = $_GET['postid'];
     if($username == $_SESSION['username']){
         $sql = "DELETE FROM posts WHERE id = '" .$id ."' LIMIT 1";
-        if (mysqli_query($conn,$sql)){
+        mysqli_query($conn,$sql);
+        $id = "r".$id;
+        $table = "DROP TABLE $id";
+        if (mysqli_query($conn,$table)){
             header("Location: ../titlepage.php");
         }
     }else{

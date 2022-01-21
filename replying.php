@@ -2,8 +2,9 @@
     session_start();
     require_once('include/db.php');
     require_once('include/function.php');
+    $id = $_GET['id'];
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $title = prep_data($_POST['title']);
         $content = prep_data($_POST['content']);
         $isAnonymous = prep_data($_POST['anonymous']);
         $username = $_SESSION['nickname'];
@@ -15,29 +16,15 @@
         $result = mysqli_fetch_assoc($result);
         $viewOrder = ++$result['largestOrder'];
 
-        $sql = "INSERT INTO posts (title, content, username,isAnonymous,isReported,IDname,viewOrder) VALUES ('$title','$content','$username','$isAnonymous','$isReported','$IDname','$viewOrder')";
-        mysqli_query($conn, $sql);
-
-        $pick = "SELECT id AS identification FROM posts WHERE title = '$title' LIMIT 1";
-        $result = mysqli_query($conn, $pick);
-        $id = mysqli_fetch_assoc($result);
-        $id = $id['identification'];
-        $id = "r" . $id;
-
-        $table="CREATE TABLE $id(
-            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            content VARCHAR(2000) NOT NULL,
-            username VARCHAR(20) NOT NULL,
-            isAnonymous BOOLEAN NOT NULL,
-            isReported BOOLEAN NOT NULL,
-            IDname VARCHAR(20) NOT NULL
-            )";
-        if(mysqli_query($conn, $table)){
-            echo "<script>console.log('table created')</script>";
-            header("Location: titlepage.php");
-        }else{
-            echo mysqli_error($conn);
+        $newId = "r" . $id;
+        $sql = "INSERT INTO $newId (content, username, isAnonymous,isReported,IDname) VALUES ('$content','$username','$isAnonymous','$isReported','$IDname')";
+        if(mysqli_query($conn, $sql)){
+            echo"<script> console.log('success'); </script>";
         }
+
+        $update = "UPDATE posts SET viewOrder='$viewOrder' WHERE id = '$id' LIMIT 1";
+        mysqli_query($conn, $update);
+        header("Location: reply.php?id=".$id);
     }
 
 
@@ -67,12 +54,8 @@
         </nav>
         </header>
 
-        <form class="container" action="posting.php" method="post">     
-
-            <div class="n_title">Title</div>
-            <input id="n_title"type="text" name="title" required/>
-            
-            <div class="label">Content</div>
+        <form class="container" action="<?php echo "replying.php?id=".$id?>" method="post">                 
+            <div class="label">Your Reply</div>
             <textarea name="content" required> </textarea>
 
             <div class="chkgroup">
