@@ -46,3 +46,26 @@ user{
     padding-bottom: 25px;
     overflow: hidden;
 }
+#front{
+    margin-left:10px;
+}
+#front:hover{
+    background-color: rgba(3, 149, 194, 0.932);
+    padding-bottom: 30px;
+}
+#hot:hover{
+    background-color: rgba(3, 149, 194, 0.932);
+    padding-bottom: 30px;
+}
+#public:hover{
+    background-color: rgba(3, 149, 194, 0.932);
+    padding-bottom: 30px;
+}
+#box:hover{
+    background-color: rgba(3, 149, 194, 0.932);
+    padding-bottom: 30px;
+}
+#aboutus:hover{
+    background-color: rgba(3, 149, 194, 0.932);
+    padding-bottom: 30px;
+}
