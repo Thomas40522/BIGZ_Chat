@@ -16,8 +16,9 @@
             $result = mysqli_query($conn, $sql);
             $check = mysqli_fetch_assoc($result);
             if($original_password == $check['password']){
-                $sql = "UPDATE users SET password = '$password'";
+                $sql = "UPDATE users SET password = '$password' WHERE username = '$username'";
                 mysqli_query($conn, $sql);
+                header('Location: user_setting.php');
             }else{
                 echo "<script src='js/warn.js'></script> <script> warning('the original password you entered is not correct') </script>";
             }

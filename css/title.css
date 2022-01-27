@@ -30,11 +30,11 @@
     padding-left: 2px;
 }
 
-.container:hover{
-    background-color: #0c7272;
+/* #c_title:hover .container{
+    background-color: rgb(12, 114, 114);
     border: 2px solid #0c7272;
     cursor:pointer;
-}
+} */
 #a_title{
     text-decoration: none;
 }
@@ -44,7 +44,7 @@
     font-weight:bold;
     color: #000000;
 }
-.container:hover #c_title{
+#c_title:hover{
     text-decoration: underline;
 }
 

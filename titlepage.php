@@ -36,7 +36,7 @@
             while($post = mysqli_fetch_assoc($posts)){
         ?>
         <div class="content">
-            <a href="<?php echo 'reply.php?id='.$post['id'];?>" id="a_title">
+            <a target="_blank" href="<?php echo 'reply.php?id='.$post['id'];?>" id="a_title">
             <div class="container">
                 <span id="c_title"><?php echo $post['title']; ?></span>
                 <div class="links">
