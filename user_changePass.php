@@ -2,6 +2,7 @@
     session_start();
     require_once('include/db.php');
     require_once('include/function.php');
+    require_once('isLogin.php');
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = $_SESSION['username'];
         $password = $_POST['password'];
@@ -18,7 +19,14 @@
             if($original_password == $check['password']){
                 $sql = "UPDATE users SET password = '$password' WHERE username = '$username'";
                 mysqli_query($conn, $sql);
-                header('Location: user_setting.php');
+                ?>
+                <script src="js/user_changePass.js"></script>
+                <script>
+                    password = "<?php echo $password;?>";
+                    changePassword(password);
+                </script>
+                <?php
+                // header('Location: user_setting.php');
             }else{
                 echo "<script src='js/warn.js'></script> <script> warning('the original password you entered is not correct') </script>";
             }
@@ -33,21 +41,48 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/user.css">
-        <title>BIGZ chat</title>
+        <title>Change Password _BIGZ Chat</title>
     </head>
     <body>
         <header>
         <nav class="nav_bar">
-            <a href="index.php"><span id = "title">BIGZ Chat</span></a>
-            <a href="titlepage.php"><span id = "front">首页</span></a>
-            <a href="developing.php"><span id = "hot">热点</span></a>
-            <a href="developing.php"><span id = "public"> 公告栏</span></a>
-            <a href="developing.php"><span id = "box"> 意见箱</span></a>
-            <a href="developing.php"><span id = "aboutus">About Us</span></a>
+            <div id = "c_navbar">
+                <a href="index.php"><span id = "title">BIGZ Chat</span></a>
+                <a href="titlepage.php"><span id = "front">首页</span></a>
+                <a href="hotspot.php"><span id = "hot">热点</span></a>
+                <a href="public.php"><span id = "public">公告栏</span></a>
+                <a href="box.php"><span id = "box">意见箱</span></a>
+                <a href="aboutUs.php"><span id = "aboutus">关于我们</span></a>
+                <a href="menu.php"><span id = "menu">菜单</span></a>
+            </div>
+            <div id = "e_navbar">
+                <a href="index.php"><span id = "title">BIGZ Chat</span></a>
+                <a href="titlepage.php"><span id = "front">Home</span></a>
+                <a href="hotspot.php"><span id = "hot">Topic</span></a>
+                <a href="public.php"><span id = "public">Billboard</span></a>
+                <a href="box.php"><span id = "box">Advice</span></a>
+                <a href="aboutUs.php"><span id = "aboutus">About Us</span></a>
+                <a href="menu.php"><span id = "menu">Menu</span></a>
+            </div>
+
+            <a href=<?php
+                if(!empty($_SESSION['username'])){
+                    echo "user_setting.php";
+                }else{
+                    echo "user_login.php";
+                }
+            ?>>
             <user>
                 <img id = "profilePic" src = "assests/ProfilePic.png", width = "40px", height = "40px", alt = "profile picture">
-                <span id = "username"></span>
-            </user>
+                <span id = "username"><?php 
+                    if(!empty($_SESSION['username'])){
+                        echo $_SESSION['nickname'];
+                    }else{
+                        echo "User Name";
+                    }
+                ?></span>
+            </user></a>
+            <div id="language"><span id="chinese">中文</span><span id="slash">_____</span><span id="english">English</span></div>
         </nav>
         </header>
 
@@ -71,5 +106,6 @@
         </form>
 
         <script src="js/user_changePass.js"></script>
+        <script src="js/navbar.js"></script>
     </body>
 </html>

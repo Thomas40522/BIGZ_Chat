@@ -1,0 +1,21 @@
+#content{
+    padding-top: 90px;
+    font-family: "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+section > div{
+    font-family: "Microsoft JhengHei",  Tahoma , Verdana , Arial , sans-serif;
+    font-size:12px;
+    font-style: italic;
+    color: gray;
+}
+#posters{
+    list-style-type: none;
+}
+#posters > ul{
+    float: left;
+}
+img{
+    object-fit: cover;
+}

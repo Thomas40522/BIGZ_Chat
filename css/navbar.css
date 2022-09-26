@@ -7,41 +7,103 @@
     text-decoration: none;
 }
 
-.nav_bar{
-    padding-left: 25px;
+#c_navbar #front,#c_navbar #hot,#c_navbar #public,#c_navbar #box,#c_navbar #aboutus,#c_navbar #menu{
+    /* vertical-align: middle; */
+    font-size: 30px;
+    padding-left:2%;
+    padding-right:2%;
+    padding-top:25px;
+    padding-bottom: 30px;
 }
 
-#front, #hot, #public, #box, #aboutus{
-    padding-left:25px;
-    padding-right:25px;
-    padding-top:25px;
-    padding-bottom: 25px;
+#c_navbar, #e_navbar{
+    vertical-align: middle;
 }
+
+#e_navbar #front,#e_navbar #hot,#e_navbar #public,#e_navbar #box,#e_navbar #aboutus,#e_navbar #menu{
+    /* font-family:Arial, Helvetica, sans-serif;
+    vertical-align: middle; */
+    font-size: 34.5px;
+    padding-left:1%;
+    padding-right:1%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#title{
+    margin-top: 30px;
+}
+
+#c_navbar{
+    visibility: hidden;
+}
+
+#e_navbar{
+    display:none;
+}
+
+#chinese{
+    position:absolute;
+    width: 30px;
+    top: 15px;
+    right: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    color: white;
+}
+
+#slash{
+    cursor:default;
+    position:absolute;
+    top:30px;
+    right: 10px;
+    font-size: 12px;
+    color: white;
+}
+
+#english{
+    position:absolute;
+    top: 55px;
+    right: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    color: rgb(126, 126, 126);
+}
+
 
 user{
     cursor: pointer;
 }
 
 #username{
+    position: absolute;
+    right: 100px;
+    top: 19px;
     padding-top:5px;
-    padding-right:25px;
+    padding-right:1.5%;
     float:right;
 }
 
 #profilePic{
+    position: absolute;
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    margin-right:25px;
+    top: 24px;
+    right: 60px;
     float:right;
 }
 
 .nav_bar{
-    background-color: rgba(0, 195, 255);
+    /* background-color: rgba(0, 195, 255); */
+    background-color: #0063B2FF;
+    height: 41px;
     position:fixed;
+    z-index: 3;
     top:0;
     left:0;
     right:0;
+    padding-left: 25px;
     padding-top:20px;
     padding-bottom: 25px;
     overflow: hidden;
@@ -49,23 +111,49 @@ user{
 #front{
     margin-left:10px;
 }
-#front:hover{
-    background-color: rgba(3, 149, 194);
+
+#front:hover,#hot:hover, #public:hover, #box:hover, #aboutus:hover, #menu:hover{
+    background-color: rgb(1, 79, 143);
     padding-bottom: 30px;
 }
-#hot:hover{
-    background-color: rgba(3, 149, 194);
-    padding-bottom: 30px;
+
+#menu{
+    display:none;
 }
-#public:hover{
-    background-color: rgba(3, 149, 194);
-    padding-bottom: 30px;
+
+@media only screen and (max-width: 1180px){
+    #box, #aboutus{
+        display: none;
+    }
+    #menu{
+        display:inline;
+    }
 }
-#box:hover{
-    background-color: rgba(3, 149, 194);
-    padding-bottom: 30px;
+
+@media only screen and (max-width: 970px){
+    #public, #box, #aboutus{
+        display: none;
+    }
+    #menu{
+        display:inline;
+    }
 }
-#aboutus:hover{
-    background-color: rgba(3, 149, 194);
-    padding-bottom: 30px;
+
+@media only screen and (max-width: 810px){
+    #public, #hot, #box, #aboutus{
+        display: none;
+    }
+    #menu{
+        display:inline;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    #public, #hot, #box, #aboutus, #front{
+        display: none;
+    }
+    #menu{
+        margin-left:10px;
+        display: inline;
+    }
 }

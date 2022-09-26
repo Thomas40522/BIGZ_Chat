@@ -2,11 +2,20 @@
     session_start();
     require_once('include/db.php');
     require_once('isLogin.php');
+    require_once('include/isVerified.php');
+    require_once('include/isBlacklist.php');
     require_once('include/function.php');
+
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $title = prep_data($_POST['title']);
+        $title = str_replace(' ','&nbsp',$title);
+        $title = block_content($title);
         $content = prep_data($_POST['content']);
+        $content = str_replace(' ','&nbsp',$content);
+        $content = block_content($content);
+        $content = nl2br($content);
         $isAnonymous = prep_data($_POST['anonymous']);
+        $uploadImg = 1;
         $username = $_SESSION['nickname'];
         $IDname = $_SESSION['username'];
         $isReported = 0;
@@ -16,10 +25,10 @@
         $result = mysqli_fetch_assoc($result);
         $viewOrder = ++$result['largestOrder'];
 
-        $sql = "INSERT INTO posts (title, content, username,isAnonymous,isReported,IDname,viewOrder) VALUES ('$title','$content','$username','$isAnonymous','$isReported','$IDname','$viewOrder')";
+        $sql = "INSERT INTO posts (title, content, username,isAnonymous,isReported,IDname,viewOrder, uploadImg) VALUES ('$title','$content','$username','$isAnonymous','$isReported','$IDname','$viewOrder','$uploadImg')";
         mysqli_query($conn, $sql);
 
-        $pick = "SELECT id AS identification FROM posts WHERE title = '$title' LIMIT 1";
+        $pick = "SELECT id AS identification FROM posts WHERE viewOrder = '$viewOrder' LIMIT 1";
         $result = mysqli_query($conn, $pick);
         $id = mysqli_fetch_assoc($result);
         $id = $id['identification'];
@@ -34,8 +43,8 @@
             IDname VARCHAR(20) NOT NULL
             )";
         if(mysqli_query($conn, $table)){
-            echo "<script>console.log('table created')</script>";
             header("Location: titlepage.php");
+            echo "<script>console.log('table created')</script>";
         }else{
             echo mysqli_error($conn);
         }
@@ -50,42 +59,70 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/posting.css">
-        <title>BIGZ chat</title>
+        <title>Post _BIGZ chat</title>
     </head>
     <body>
         <header>
         <nav class="nav_bar">
-            <a href="index.php"><span id = "title">BIGZ Chat</span></a>
-            <a href="titlepage.php"><span id = "front">首页</span></a>
-            <a href="developing.php"><span id = "hot">热点</span></a>
-            <a href="developing.php"><span id = "public"> 公告栏</span></a>
-            <a href="developing.php"><span id = "box"> 意见箱</span></a>
-            <a href="developing.php"><span id = "aboutus">About Us</span></a>
+            <div id = "c_navbar">
+                <a href="index.php"><span id = "title">BIGZ Chat</span></a>
+                <a href="titlepage.php"><span id = "front">首页</span></a>
+                <a href="hotspot.php"><span id = "hot">热点</span></a>
+                <a href="public.php"><span id = "public">公告栏</span></a>
+                <a href="box.php"><span id = "box">意见箱</span></a>
+                <a href="aboutUs.php"><span id = "aboutus">关于我们</span></a>
+                <a href="menu.php"><span id = "menu">菜单</span></a>
+            </div>
+            <div id = "e_navbar">
+                <a href="index.php"><span id = "title">BIGZ Chat</span></a>
+                <a href="titlepage.php"><span id = "front">Home</span></a>
+                <a href="hotspot.php"><span id = "hot">Topic</span></a>
+                <a href="public.php"><span id = "public">Billboard</span></a>
+                <a href="box.php"><span id = "box">Advice</span></a>
+                <a href="aboutUs.php"><span id = "aboutus">About Us</span></a>
+                <a href="menu.php"><span id = "menu">Menu</span></a>
+            </div>
+
+            <a href=<?php
+                if(!empty($_SESSION['username'])){
+                    echo "user_setting.php";
+                }else{
+                    echo "user_login.php";
+                }
+            ?>>
             <user>
                 <img id = "profilePic" src = "assests/ProfilePic.png", width = "40px", height = "40px", alt = "profile picture">
-                <span id = "username"></span>
-            </user>
+                <span id = "username"><?php 
+                    if(!empty($_SESSION['username'])){
+                        echo $_SESSION['nickname'];
+                    }else{
+                        echo "User Name";
+                    }
+                ?></span>
+            </user></a>
+            <div id="language"><span id="chinese">中文</span><span id="slash">_____</span><span id="english">English</span></div>
         </nav>
         </header>
 
         <form class="container" action="posting.php" method="post">     
 
             <div class="n_title">Title</div>
-            <input id="n_title"type="text" name="title" required/>
+            <input id="n_title"type="text" name="title" required maxlength = 800/>
             
             <div class="label">Content</div>
-            <textarea name="content" required> </textarea>
+            <textarea id = "n_content" name="content" required maxlength = 9000></textarea>
 
             <div class="chkgroup">
-                <span class="label-in">Anonymous</span>
                 <input type="hidden" name="anonymous" value="0" />
                 <input type="checkbox" name="anonymous" value="1" />
+                <span class="label-in">Anonymous</span>
             </div>
             
-            <input id="button"type="submit" />
+            <input id="button" type="submit" />
         </form> 
 
 
-        <script src="js/titlepage.js"></script>
+        <script src="js/navbar.js"></script>
+        <script src="js/posting_function.js"></script>
     </body>
 </html>

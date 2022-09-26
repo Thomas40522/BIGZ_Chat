@@ -18,3 +18,10 @@
 .form{
     margin-top:20px;
 }
+
+.black{
+    color: rgb(2, 2, 85);
+}
+.red{
+    color: rgb(255, 0, 0);
+}

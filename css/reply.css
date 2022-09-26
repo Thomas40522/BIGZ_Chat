@@ -1,9 +1,23 @@
+#background-color{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(201, 198, 198, 0.295);
+    z-index: -1;
+}
+
+
 .post{
     margin-top:100px;
     border-radius: 5px 10px 5px 10px;
-    border: 2px solid #0b60df;
+    border: 2px solid #28334AFF;
     box-sizing: border-box;
-    background-color: #0b60df;
+    background-color: #28334AFF;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     height: 45px;
     margin-bottom:20px;
 }
@@ -18,19 +32,23 @@
 }
 .post:hover{
     cursor: pointer;
-    background-color: #2290cf;
-    border: 2px solid #2290cf;
+    background-color: rgb(65, 82, 117);
+    border: 2px solid rgb(65, 82, 117);
 }
 
 .container {
     border-radius: 5px 10px 0px 0px;
     border: 2px solid #0fa0a0;
+    border: 0px solid #0fa0a0;
     box-sizing: border-box;
-    background-color: #0fa0a0;
-    height: 50px;
+    /* background-color: #0fa0a0; */
+    background-color: #89ABE3FF;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    height: auto;
     padding-top: 5px;
     padding-right: 2px;
     padding-left: 2px;
+    padding-bottom: 5px;
 }
 
 #a_title{
@@ -67,30 +85,47 @@
     color:rgba(34, 31, 31, 0.829);
 }
 #content {
-    background-color: #0df3f3;
+    /* background-color: #0df3f3; */
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    height: 175px;
+    box-sizing:content-box;
+    border: 0;
+    height: auto;
     padding: 10px;
 }
 
 #reply_content {
     border-radius: 5px 10px 0px 0px;
-    background-color: #0df3f3;
+    /* background-color: #0df3f3; */
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    height: 35px;
+    box-sizing:content-box;
+    border: 0;
+    height: auto;
     padding: 10px;
 }
 
 #text_content{
     margin-left:5px;
     font-size:17px;
+    word-wrap: break-word;
+    width: auto;
 }
 
+#image{
+    margin-bottom: 20px;
+    object-fit: contain;
+}
 
 #name{
     border-radius: 0px 0px 5px 10px;
     background-color: #0df3f3;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    box-sizing:content-box;
     height: 32px;
     margin-bottom: 30px;
     padding-right:2px;
@@ -104,4 +139,8 @@
     color: black;
     margin-left:2px;
     font-size:17px;
+}
+
+iframe{
+    padding-bottom: 20px;
 }

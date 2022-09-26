@@ -34,7 +34,7 @@
     font-weight:100;
 }
 .label-in{
-    padding-left:50px;
+    /* padding-left:50px; */
     padding-top:10px;
     font-size: 17px;
     font-weight:100;
@@ -55,4 +55,8 @@ textarea{
     border-radius:3px;
     cursor: pointer;
     width: 130px;
+}
+.chkgroup{
+    margin-left:50px;
+    margin-top:10px;
 }

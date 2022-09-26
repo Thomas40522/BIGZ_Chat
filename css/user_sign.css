@@ -1,0 +1,43 @@
+#changeNameColor{
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+#changeEmailColor{
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+#changePasswordColor{
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+#changeConPasswordColor{
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+#name{
+    display: inline;
+}
+
+#email{
+    display: inline;
+}
+
+#password{
+    display: inline;
+}
+
+#confirm_password{
+    display: inline;
+}
+
+.displayBlock{
+    display: block;
+}
