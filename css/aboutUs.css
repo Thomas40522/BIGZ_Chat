@@ -1,0 +1,12 @@
+#info{
+    padding-top:100px;
+    padding-left: 20px;
+}
+.member{
+    font-size: 17px;
+    color:black;
+    text-decoration: underline;
+}
+#info span{
+    font-size: 17px;
+}

@@ -1,0 +1,24 @@
+#uploadBtn{
+    margin-left:30px;
+    margin-top: 20px;
+}
+
+#explanation{
+    padding-top: 5px;
+    padding-left: 50px;
+    font-size: 15px;
+}
+
+#vori{
+    margin-top:10px;
+    margin-left: 30px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    border-radius:3px;
+    cursor: pointer;
+    width: 130px;
+}
+
+#video{
+    display: none;
+}

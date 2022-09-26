@@ -1,0 +1,27 @@
+.registration{
+    margin-top:110px;
+    
+}
+.topset{
+    margin-left:50px;
+    font-size: 25px;
+    font-weight: bold; 
+}
+.form label{
+    margin-left:50px;
+    width: 300px;
+    font-size: 17px;
+}
+.form p{
+    display:inline;
+}
+.form{
+    margin-top:20px;
+}
+
+.black{
+    color: rgb(2, 2, 85);
+}
+.red{
+    color: rgb(255, 0, 0);
+}
